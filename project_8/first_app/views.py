@@ -51,11 +51,11 @@ def pass_change(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request,form.user)#password change korbe
-            return redirect("profile")
-        
+            return redirect("profile")  
     else:
         form=PasswordChangeForm(user=request.user)
-    return render(request,'./passchange.html',{'form':form})    
+    return render(request,'./passchange.html',{'form':form})   
+ 
 def pass_change2(request):
     if request.method=="POST":
         form=SetPasswordForm(user=request.user, data=request.POST)
